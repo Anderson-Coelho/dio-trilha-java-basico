@@ -9,7 +9,6 @@ public class ContaTerminal {
 		Scanner scan = new Scanner(System.in);
 
 		// Declarando as variáveis.
-
 		String sAgencia = "";
 		String sNomeCliente = "";
 		String sSaldo = "";
@@ -23,28 +22,36 @@ public class ContaTerminal {
 			System.out.println("Entrada inválida. \nPor favor, digite um número válido para a Conta: \n\"SOMENTE NÚMEROS.\"");
 			scan.next(); // Descarta a entrada inválida
 		}
-
+		
 		iNumero = scan.nextInt();
 		scan.nextLine(); // Consumir o caractere de nova linha deixado por nextInt()
 
 		// Solicitar e ler o número da agência.
-        System.out.print("Por favor, digite o número da Agência sem o \"-\": ");
-        while (true) {
-            sAgencia = scan.nextLine();
-            if (sAgencia.matches("\\d+")) { // Verifica se a entrada contém apenas dígitos
-                break;
-            } else {
-                System.out.println("Entrada inválida. Por favor, informe o número correto da agência (somente números):");
-            }
-        }
+		System.out.print("Por favor, digite o número da Agência sem o \"-\": ");
+		while (true) {
+			sAgencia = scan.nextLine();
+			if (sAgencia.matches("\\d+")) { // Verifica se a entrada contém apenas dígitos
+				break;
+			} else {
+				System.out
+						.println("Entrada inválida. Por favor, informe o número correto da agência (somente números):");
+			}
+		}
 
 		// Solicitar e ler o nome do cliente.
 		System.out.println("Por favor, digite seu nome?");
-		sNomeCliente = scan.nextLine();
+		while (true) {
+			sNomeCliente = scan.nextLine();
+			if (sNomeCliente.matches("[a-zA-Z\\s]+")) { // Verifica se a entrada contém apenas letras e espaços
+				sNomeCliente = sNomeCliente.toUpperCase(); // Converte todos os caracteres para maiúsculo
+				break;
+			} else {
+				System.out.println("Entrada inválida. Por favor, digite seu nome novamente.\nApenas com letras");
+			}
+		}
 
 		// Loop para solicitar a entrada do usuário até que seja válida
 		do {
-
 			// Solicitar e ler o saldo inicial
 			System.out.println("Por favor, digite o seu saldo?");
 			sSaldo = scan.nextLine();
